@@ -9,22 +9,8 @@ trigger:
 pool: agent1
 
 steps:
-- task: TerraformInstaller@0
-  inputs:
-    terraformVersion: 'latest'
-- task: TerraformTaskV3@3
-  inputs:
-    provider: 'aws'
-    command: 'init'
-    workingDirectory: '$(System.DefaultWorkingDirectory)/_godha12_terraform_azure'
-    backendServiceAWS: 'terraform_12'
-    backendAWSBucketName: 'godhademo1234'
-    backendAWSKey: 'myapp/dev/terraform.tfstate'
-- task: TerraformTaskV3@3
-  inputs:
-        provider: 'aws'
-        command: 'plan'
-        workingDirectory: '$(System.DefaultWorkingDirectory)/_godha12_terraform_azure'
-        environmentServiceNameAWS: 'terraform_12'
+ - task: TerraformInstaller@0
+   inputs:
+     terraformVersion: 'latest'
 
-    
+ 
