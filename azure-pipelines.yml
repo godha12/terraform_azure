@@ -11,14 +11,13 @@ pool: agent1
 steps:
 - task: charleszipp.azure-pipelines-tasks-terraform.azure-pipelines-tasks-terraform-installer.TerraformInstaller@0
   displayName: 'Use Terraform latest'
-- task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV3@3
-  displayName: 'Terraform : init'
+- task: TerraformTaskV3@3
   inputs:
-    provider: aws
-    workingDirectory: '$(System.DefaultWorkingDirectory)/_godha12_terraform_azure'
-    backendServiceAWS: terraform
-    backendAWSBucketName: godhademo1234
-    backendAWSKey: myapp/dev/terraform.tfstate
-
+    provider: 'aws'
+    command: 'init'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/$(System.DefaultWorkingDirectory)/_godha12_terraform_azure'
+    backendServiceAWS: 'terraform_12'
+    backendAWSBucketName: 'godhademo1234'
+    backendAWSKey: 'myapp/dev/terraform.tfstate'
 
  
