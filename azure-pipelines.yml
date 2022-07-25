@@ -9,8 +9,7 @@ trigger:
 pool: agent1
 
 steps:
- - task: TerraformInstaller@0
-   inputs:
-     terraformVersion: 'latest'
+- task: charleszipp.azure-pipelines-tasks-terraform.azure-pipelines-tasks-terraform-installer.TerraformInstaller@0
+  displayName: 'Use Terraform latest'
 
  
