@@ -1,4 +1,5 @@
 # Starter pipeline
+
 # Start with a minimal pipeline that you can customize to build and deploy your code.
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
@@ -8,14 +9,15 @@ trigger:
 
 pool: agent1
 
+
 steps:
 - task: charleszipp.azure-pipelines-tasks-terraform.azure-pipelines-tasks-terraform-installer.TerraformInstaller@0
   displayName: 'Use Terraform latest'
-- task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV3@3
-  displayName: 'Terraform : init'
+- task: CmdLine@2
   inputs:
-    provider: aws
-    workingDirectory: '$(System.DefaultWorkingDirectory)/_godha12_terraform_azure'
-    backendServiceAWS: terraform_12
-    backendAWSBucketName: godhademo1234
-    backendAWSKey: 'myapp/dev/terraform.tfstate'
+    script: 'terraform init'
+- task: CmdLine@2
+  inputs:
+    script: |
+      terraform plan
+      terraform apply --auto-approve
