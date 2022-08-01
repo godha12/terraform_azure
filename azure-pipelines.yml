@@ -14,9 +14,11 @@ steps:
 - task: charleszipp.azure-pipelines-tasks-terraform.azure-pipelines-tasks-terraform-installer.TerraformInstaller@0
   displayName: 'Use Terraform latest'
 - task: CmdLine@2
+  displayName: 'Intialize'
   inputs:
     script: 'terraform init'
 - task: CmdLine@2
+  displayName: 'Apply'
   inputs:
     script: |
       terraform plan
