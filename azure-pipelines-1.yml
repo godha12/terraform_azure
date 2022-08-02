@@ -12,4 +12,3 @@ steps:
   inputs:
     script: |
       terraform init
-      terraform apply
